@@ -22,6 +22,10 @@ def save(iterable:Iterable[str],file_name:str):
 
 
 def non_rep_chars(words:List[str]) ->Set:
-    __words = {i if len(i) == len(set(i)) else '\r' for i in words}
+    __words = {i if len(i) == len(set(i)) else 'aaaaaa' for i in words}
+    # __words = []
+    # for i in words:
+    #     if len(i) == len(set(i)):
+    #         __words.append(i)
     return __words
 

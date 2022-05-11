@@ -8,7 +8,6 @@ from .utils import read,save
 class Word:
     def __init__(self,word:str):
         _word =word.strip().lower()
-
         if len(_word) != 5 :
             raise Exception('Word {} must be 5 chars'.format(_word))
 
@@ -82,6 +81,11 @@ class WordSet:
     def save(self,file_name):
         if self.__words != None:
             save([word.word for word in self.__words],file_name)
+    
+    @property
+    def get_most_repeated_chars(self):
+        return sorted(self.counter_all)
+
 
     @property    
     def words(self) ->List[Word]:
@@ -91,7 +95,9 @@ class WordSet:
     def count(self) ->int:
         return len(self.__words)
     
+    @property
+    def counter_all(self)->List[Counter]:
+        return [i.counter for i in self.__words]
+    
     def __str__(self) -> str:
         return f'words = {self.count} from {self.file_name}'
-    
-
